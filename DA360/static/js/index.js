@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
 
     var options = {
-      autoplay: true,   // 启用自动播放
+      autoplay: false,   // 启用自动播放
       duration: 5000,   // 轮播间隔：5000毫秒 = 5秒
 			slidesToScroll: 1,
 			slidesToShow: 1,
