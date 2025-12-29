@@ -111,7 +111,7 @@ body {
 }
 
 .results-carousel {
-  width: 70%; /* 根据实际需要进行调整 */
+  width: 100%; /* 根据实际需要进行调整 */
   margin: 0 auto; /* 使容器在页面中居中 */
   overflow: hidden; /* 隐藏溢出的内容 */
 }
@@ -245,6 +245,16 @@ body {
   color: #c27100; /* 设置文本颜色 */
   font-size: 15px;
 }
+
+
+.img-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates four columns */
+  grid-gap: 10px; /* Adjusts the gap between videos */
+  margin: auto; /* Centers the grid */
+  max-width: 1200px; /* Adjusts the maximum width of the grid */
+}
+
 
 .img-grid-3 {
   display: grid;
