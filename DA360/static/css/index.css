@@ -261,7 +261,7 @@ body {
   grid-template-columns: repeat(3, 1fr); /* Creates two columns */
   grid-gap: 10px; /* Adjusts the gap between videos */
   margin: auto; /* Centers the grid */
-  max-width: 800px; /* Adjusts the maximum width of the grid */
+  max-width: 1000px; /* Adjusts the maximum width of the grid */
 }
 
 .img-grid-2 {
