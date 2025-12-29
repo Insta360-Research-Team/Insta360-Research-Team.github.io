@@ -29,35 +29,44 @@ $(document).ready(function() {
 
     });
 
-    var options = {
-      autoplay: true,   // 启用自动播放
-      duration: 2000,   // 轮播间隔：5000毫秒 = 5秒
-			slidesToScroll: 1,
-			slidesToShow: 1,
-			loop: true,
-			infinite: true,
-			//autoplay: false,
-			autoplaySpeed: 8000,
-    }
+    // ========== 第一步：修改全局选项，关闭默认自动播放 ==========
+    // 这个选项将应用于所有 .carousel，但我们会覆盖特定实例
+    var globalCarouselOptions = {
+        autoplay: false,   // ⚠️ 重要：这里设为 false，关闭全局自动播放
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        loop: true,
+        infinite: true,
+        autoplaySpeed: 5000,
+    };
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    // ========== 第二步：初始化所有普通轮播（不自动播放）==========
+    // 这会初始化所有具有 .carousel 类但 NOT #results-carousel 的元素
+    // 我们使用一个过滤选择器来排除特定ID
+    var allCarouselsExceptSpecial = bulmaCarousel.attach('.carousel:not(#results-carousel)', globalCarouselOptions);
 
-    // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
-    }
+    // ========== 第三步：单独初始化您想自动播放的特定轮播 ==========
+    // 为 #results-carousel 创建独立的、开启自动播放的选项
+    var specialCarouselOptions = {
+        autoplay: true,    // ✅ 专门为这个轮播开启自动播放
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        loop: true,
+        infinite: true,
+        autoplaySpeed: 5000, // 轮播间隔5秒
+    };
+    // 单独初始化特定轮播
+    var specialCarousels = bulmaCarousel.attach('#results-carousel', specialCarouselOptions);
 
-    // Access to bulmaCarousel instance of an element
-    var element = document.querySelector('#my-element');
-    if (element && element.bulmaCarousel) {
-    	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
-    		console.log(state);
-    	});
+    // ========== 第四步：合并两个轮播数组，方便统一管理事件（可选） ==========
+    // 将所有轮播实例合并到一个数组，以便后续统一添加事件监听
+    var allCarousels = [...allCarouselsExceptSpecial, ...specialCarousels];
+
+    // 为所有轮播添加事件监听（保持您原有的日志功能）
+    for(var i = 0; i < allCarousels.length; i++) {
+        allCarousels[i].on('before:show', state => {
+            console.log(state);
+        });
     }
 
     /*var player = document.getElementById('interpolation-video');
