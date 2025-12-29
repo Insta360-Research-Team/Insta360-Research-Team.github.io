@@ -132,7 +132,7 @@ body {
 
 .results-carousel .slider-pagination {
   position: absolute; /* Allow absolute positioning */
-  bottom: -4px; /* Adjust this value to move dots lower */
+  bottom: -9px; /* Adjust this value to move dots lower */
 }
 
 
