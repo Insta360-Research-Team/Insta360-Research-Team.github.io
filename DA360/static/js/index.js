@@ -31,13 +31,13 @@ $(document).ready(function() {
 
     var options = {
       autoplay: true,   // 启用自动播放
-      duration: 4000,   // 轮播间隔：5000毫秒 = 5秒
+      duration: 2000,   // 轮播间隔：5000毫秒 = 5秒
 			slidesToScroll: 1,
 			slidesToShow: 1,
 			loop: true,
 			infinite: true,
 			//autoplay: false,
-			autoplaySpeed: 1000,
+			autoplaySpeed: 8000,
     }
 
 		// Initialize all div with carousel class
