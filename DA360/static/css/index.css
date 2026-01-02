@@ -111,7 +111,7 @@ body {
 }
 
 .results-carousel {
-  width: 100%; /* 根据实际需要进行调整 */
+  width: 85%; /* 根据实际需要进行调整 */
   margin: 0 auto; /* 使容器在页面中居中 */
   overflow: hidden; /* 隐藏溢出的内容 */
 }
@@ -137,10 +137,10 @@ body {
 
 
 
-
 .results-carousel video {
   margin: 0;
 }
+
 
 
 .interpolation-panel {
@@ -313,6 +313,8 @@ body {
 
 
 
+
+
 pre {
   position: relative;
   background-color: #f6f8fa;
@@ -332,3 +334,40 @@ pre code {
 #BibTeX .button:hover {
   background-color: #eaeef2;
 }
+
+.vis-showcase-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.vis-images-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.vis-images-row img {
+  flex: 1;
+  max-width: calc(50% - 4px);
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pointcloud-container {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
+}
+
+.vis-caption {
+  text-align: center;
+  color: #e21d1d;
+  font-size: 16px;
+  margin-top: 12px;
+  font-style: italic;
+}
+
