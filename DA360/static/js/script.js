@@ -25,21 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function copyBibtex() {
-  const bibtexCode = document.getElementById('bibtex-code').textContent;
-  navigator.clipboard.writeText(bibtexCode).then(() => {
-    const button = event.currentTarget;
-    button.innerHTML = '<span class="icon"><i class="fas fa-check"></i></span><span>Copied!</span>';
-    button.style.opacity = '1';
-    setTimeout(() => {
-      button.innerHTML = '<span class="icon"><i class="fas fa-copy"></i></span><span>Copy</span>';
-      button.style.opacity = '0.7';
-    }, 2000);
-  }).catch(err => {
-    console.error('Failed to copy text: ', err);
-  });
-}
-
 
 import * as THREE from 'three';
 import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
@@ -172,3 +157,23 @@ function createPointCloudViewer(containerId, modelPath, azimuth=70.0, elevation=
 export { createPointCloudViewer };
 
 
+
+function copyBibtex(event) { // ✅ 添加 event 参数
+  const bibtexCode = document.getElementById('bibtex-code').textContent;
+  navigator.clipboard.writeText(bibtexCode).then(() => {
+    const button = event.currentTarget; // ✅ 现在 event 已定义
+    button.innerHTML = '<span class="icon"><i class="fas fa-check"></i></span><span>Copied!</span>';
+    button.style.opacity = '1';
+    setTimeout(() => {
+      button.innerHTML = '<span class="icon"><i class="fas fa-copy"></i></span><span>Copy</span>';
+      button.style.opacity = '0.7';
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy text: ', err);
+  });
+}
+
+if (typeof window !== 'undefined') {
+  window.copyBibtex = copyBibtex;
+  window.createPointCloudViewer = createPointCloudViewer;
+}
